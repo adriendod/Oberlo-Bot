@@ -13,8 +13,8 @@ options.add_argument('--user-data-dir=Profile S')
 driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver", options=options)
 
 
-email = 'adrien.dod@gmail.com'
-password = 'Aa87708770'
+email = *******
+password = ******
 
 #Login AliExpress
 
