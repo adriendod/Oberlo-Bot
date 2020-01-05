@@ -7,14 +7,13 @@ from selenium.webdriver.support import expected_conditions as EC
 from config import *
 import time
 
-
 options = Options()
 options.add_argument('--log-level=3')
 options.add_argument('--user-data-dir=Profile S')
 driver = webdriver.Chrome("chromedriver_mac64/chromedriver", options=options)
 
 #Login AliExpress
-def AliExpressLogIn(email, password):
+def AliExpressLogIn(AliExpress_email, AliExpress_password):
 	driver.get("https://login.aliexpress.com/")
 	wait = WebDriverWait(driver, 15)
 	wait.until(EC.frame_to_be_available_and_switch_to_it(0))
@@ -24,8 +23,8 @@ def AliExpressLogIn(email, password):
 	aeloginButton = driver.find_element_by_class_name("fm-submit")
 
 	aeEmail.clear()
-	aeEmail.send_keys(email)
-	aePassword.send_keys(password)
+	aeEmail.send_keys(AliExpress_email)
+	aePassword.send_keys(AliExpress_password)
 	aeloginButton.click()
 
 	#Wait for login
@@ -36,10 +35,11 @@ def AliExpressLogIn(email, password):
 	except:
 	    print("Login Failed")
 
-def OberloLogIn(email, password):
+
+def OberloLogIn(Oberlo_email, Oberlo_password):
 	driver.get("https://app.oberlo.com")
-	emailField = driver.find_element_by_name("email")
-	passwordField = driver.find_element_by_name("password")
+	emailField = driver.find_element_by_name(Oberlo_email)
+	passwordField = driver.find_element_by_name(Oberlo_password)
 	loginButton = driver.find_element_by_class_name("login__button")
 
 	emailField.send_keys(email)
@@ -94,7 +94,6 @@ def OberloOrder():
 	checkoutButton.click()
 
 	#Wait for payment to complete
-
 	time.sleep(5)
 
 	try:
@@ -118,8 +117,8 @@ def OberloProcessing():
 			print("No Button "+str(i+1))
 
 
-AliExpressLogIn(email, password)
-OberloLogIn(email, password)
+AliExpressLogIn(AliExpress_email, AliExpress_password)
+OberloLogIn(Oberlo_email, Oberlo_password)
 
 for _ in range(2):
     try:
