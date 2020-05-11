@@ -12,3 +12,5 @@ You can now launch the scrip again and it will order all the products in the obe
 You could run this scrip all day long on a raspberry pi or a server but be carefull not to run it too often as the captcha will be triggered.
 Capcha will also be triggered if you do more than 4 orders in a row so be sure to run the scrip more than once a day if you have many order (maybe like every 2 hours).
 
+update: it seems like the captcha is triggered everytime now on aliexpress...
+
